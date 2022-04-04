@@ -2,29 +2,33 @@
 
 include_once __DIR__ . "/../config.php";
 
-use \core\mc\user;
+use \core\mc\logger;
 
-user::init();
+$logger = logger::stdout();
 
 $data = file_get_contents("php://input");
 
+$logger->info("Received data: " . $data);
+
 $request = json_decode($data);
 
-$stages = [
-    2 => "about",
-    1 => "description",
-    4 => "final",
-    0 => "login",
-    3 => "registers",
-];
-
 if (empty($request->stage)) {
-    $request->stage = 0;
+    $request->stage = "login";
 }
 
-$_SESSION["stage"] = array_search($stages, $request->stage);
+if($request->stage !== config::current_stage()){
+    $logger->info("Stage mismatch: " . $request->stage . " != " . config::current_stage());
+    http_response_code(400);
+    exit;
+}
+
+// prepare response here
+// if redirect necessary, send back the next stage
 
 $response = [
-    "stage" => $stages[$_SESSION["stage"] + 1],
+    "stage" => config::next_stage(),
     "message" => "ok",
 ];
+
+header("Content-Type: application/json");
+echo json_encode($response);

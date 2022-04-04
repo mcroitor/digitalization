@@ -9,6 +9,14 @@ class config {
     public const WWW_PATH = "http://localhost:8000";
     public const SCRIPTS_DIR = self::WWW_PATH . '/scripts';
 
+    protected const STAGES = [
+        "login",
+        "description",
+        "about",
+        "registers",
+        "final",
+    ];
+
     protected static $var = [];
 
     protected const CORE = [
@@ -23,6 +31,9 @@ class config {
     ];
 
     public static function core() {
+        session_start();
+        $_SESSION["stage"] = self::current_stage();
+
         foreach (self::CORE as $core) {
             require_once self::CORE_DIR . "/{$core}.php";
         }
@@ -34,6 +45,16 @@ class config {
 
     public static function get($key) {
         return self::$var[$key];
+    }
+
+    public static function current_stage() {
+        return $_GET["stage"] ?? $_SESSION["stage"] ?? "login";
+    }
+
+    public static function next_stage() {
+        $stages = self::STAGES;
+        $key = array_search(self::current_stage(), $stages);
+        return $stages[($key + 1) % count($stages)];
     }
 }
 

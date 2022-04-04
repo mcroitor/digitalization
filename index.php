@@ -4,31 +4,13 @@ include_once __DIR__ . "/config.php";
 
 use core\mc\template;
 use \core\mc\i18n;
-use \core\mc\user;
 
 config::set("theme", "default");
-
-user::init();
 
 i18n::lang("ro");
 i18n::init();
 
-$stages = [
-    2 => "about",
-    1 => "description",
-    4 => "final",
-    0 => "login",
-    3 => "registers",
-];
-
-if(empty($_SESSION["stage"])){
-    $_SESSION["stage"] = 0;
-}
-$current_stage_index = $_SESSION["stage"];
-
-$current_stage = $stages[$current_stage_index];
-
-$content = file_get_contents(config::TEMPLATE_DIR . "/{$current_stage}.tpl.php");
+$content = file_get_contents(config::TEMPLATE_DIR . "/" . config::current_stage() . ".tpl.php");
 
 $data = [
     "<!-- title -->" => \core\mc\i18n::get("Questionnaire"),
