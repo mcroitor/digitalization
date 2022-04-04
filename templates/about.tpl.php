@@ -13,7 +13,23 @@
             <label for="institution_type">{{institution_type}}</label>
         </div>
         <div class="eight columns">
-            <input type="text" class="u-full-width" name="institution_type" id="institution_type" />
+            <select class="u-full-width" name="institution_type" id="institution_type">
+                <option value="University">{{University}}</option>
+                <option value="College">{{College}}</option>
+                <option value="Professional School">{{Professional School}}</option>
+                <option value="Liceum">{{Liceum}}</option>
+                <option value="Gimnasium">{{Gimnasium}}</option>
+                <option value="Primary School">{{Primary School}}</option>
+                <option value="Middle School">{{Middle School}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns">
+            <label for="district">{{district}}</label>
+        </div>
+        <div class="eight columns">
+            <select class="u-full-width" name="region" id="district"><!-- district --></select>
         </div>
     </div>
     <div class="row">
@@ -22,14 +38,6 @@
         </div>
         <div class="eight columns">
             <input type="text"  class="u-full-width" name="locality" id="locality" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="four columns">
-            <label for="region">{{region}}</label>
-        </div>
-        <div class="eight columns">
-            <input type="text"  class="u-full-width" name="region" id="region" />
         </div>
     </div>
     <div class="row">
