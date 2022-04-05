@@ -28,6 +28,7 @@ class config {
 
     // core files
     protected const CORE = [
+        "classifier",
         "database",
         "i18n",
         "lib",

@@ -31,7 +31,6 @@ class i18n {
     }
 
     public static function get($text) {
-
         if(empty(self::$translation[$text])) {
             return $text;
         }
