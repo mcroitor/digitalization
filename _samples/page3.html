@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://localhost:8000/?stage=about -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>
+        Chestionar
+    </title>
+    <link rel="stylesheet" href="./page_files/defines.css">
+    <link rel="stylesheet" href="./page_files/normalize.css">
+    <link rel="stylesheet" href="./page_files/skeleton.css">
+    <link rel="stylesheet" href="./page_files/default.css">
+    <script src="./page_files/core.js"></script>
+    <script src="./page_files/stages.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="row">
+            <h2>Chestionar de evaluare a starii registrelor de diplome</h2>
+        </header>
+        <nav class="row">
+
+        </nav>
+        <main class="row">
+            <h3>Despre centru de arhivare</h3>
+            <form name="about" method="POST">
+                <div class="row">
+                    <div class="four columns">
+                        <label for="institution_name">Denumirea institutiei</label>
+                    </div>
+                    <div class="eight columns">
+                        <input type="text" class="u-full-width" name="institution_name" id="institution_name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four columns">
+                        <label for="institution_type">Tipul institutiei</label>
+                    </div>
+                    <div class="eight columns">
+                        <select class="u-full-width" name="institution_type" id="institution_type">
+                            <option value="University">Universitate</option>
+                            <option value="College">Colegiu / Centru de excelenta</option>
+                            <option value="Professional School">Scoala profesionala</option>
+                            <option value="Liceum">Liceu</option>
+                            <option value="Gimnasium">Gimnaziu</option>
+                            <option value="Primary School">Scoala primara</option>
+                            <option value="Middle School">Scoala medie</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four columns">
+                        <label for="district">Raion / Municipiu</label>
+                    </div>
+                    <div class="eight columns">
+                        <select class="u-full-width" name="region" id="district">
+                            <option value="ANENII NOI">ANENII NOI</option>
+                            <option value="BALTI">BALTI</option>
+                            <option value="BASARABEASCA">BASARABEASCA</option>
+                            <option value="BRICENI">BRICENI</option>
+                            <option value="CAHUL">CAHUL</option>
+                            <option value="CALARASI">CALARASI</option>
+                            <option value="CANTEMIR">CANTEMIR</option>
+                            <option value="CAUSENI">CAUSENI</option>
+                            <option value="CHISINAU">CHISINAU</option>
+                            <option value="CIMISLIA">CIMISLIA</option>
+                            <option value="CRIULENI">CRIULENI</option>
+                            <option value="DONDUSENI">DONDUSENI</option>
+                            <option value="DROCHIA">DROCHIA</option>
+                            <option value="DUBASARI">DUBASARI</option>
+                            <option value="EDINET">EDINET</option>
+                            <option value="FALESTI">FALESTI</option>
+                            <option value="FLORESTI">FLORESTI</option>
+                            <option value="GLODENI">GLODENI</option>
+                            <option value="HINCESTI">HINCESTI</option>
+                            <option value="IALOVENI">IALOVENI</option>
+                            <option value="LEOVA">LEOVA</option>
+                            <option value="NISPORENI">NISPORENI</option>
+                            <option value="OCNITA">OCNITA</option>
+                            <option value="ORHEI">ORHEI</option>
+                            <option value="REZINA">REZINA</option>
+                            <option value="RISCANI">RISCANI</option>
+                            <option value="SINGEREI">SINGEREI</option>
+                            <option value="SOLDANESTI">SOLDANESTI</option>
+                            <option value="SOROCA">SOROCA</option>
+                            <option value="STEFAN-VODA">STEFAN-VODA</option>
+                            <option value="STRASENI">STRASENI</option>
+                            <option value="TARACLIA">TARACLIA</option>
+                            <option value="TELENESTI">TELENESTI</option>
+                            <option value="UNGHENI">UNGHENI</option>
+                            <option value="UTA GAGAUZIA">UTA GAGAUZIA</option>
+                            <option value="TRANSNISTRIA">TRANSNISTRIA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four columns">
+                        <label for="locality">Localitate</label>
+                    </div>
+                    <div class="eight columns">
+                        <input type="text" class="u-full-width" name="locality" id="locality">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four columns">
+                        <label for="address">Adresa</label>
+                    </div>
+                    <div class="eight columns">
+                        <input type="text" class="u-full-width" name="address" id="address">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four columns">
+                        <label for="responsible">Numele si prenumele responsabilului</label>
+                    </div>
+                    <div class="eight columns">
+                        <input type="text" class="u-full-width" name="responsible" id="responsible">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four columns">
+                        <label for="phone">Telefon responsabil</label>
+                    </div>
+                    <div class="eight columns">
+                        <input type="tel" class="u-full-width" name="phone" id="phone">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four columns">
+                        <label for="email">Email responsabil</label>
+                    </div>
+                    <div class="eight columns">
+                        <input type="email" class="u-full-width" name="email" id="email">
+                    </div>
+                </div>
+                <input type="button" name="submit" value="Next" onclick="stages.about();">
+            </form>
+
+        </main>
+        <footer class="row">
+
+        </footer>
+    </div>
+
+
+</body>
+
+</html>

@@ -23,7 +23,10 @@ class i18n {
     }
 
     public static function init() {
-        include_once self::path() . "/" . self::lang() . ".php";
+        $file = self::path() . "/" . self::lang() . ".json";
+
+        self::$translation = json_decode(file_get_contents($file), true);
+ 
     }
 
     public static function set($key, $value) {

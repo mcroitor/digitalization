@@ -1,0 +1,23 @@
+{
+    "Questionnaire" : "Анкета",
+    "The Evaluation Questionnaire about diplomas registries state" : "Оценочная анкета состояния журналов дипломов",
+    "Username": "Имя пользователя",
+    "Password": "Пароль",
+    "Log In": "Аутентификация",
+    "About the archiving center": "О центре архивирования",
+    "Institution name": "Название заведения",
+    "Institution type": "Тип заведения",
+    "Locality": "Населенный пункт",
+    "District": "Район",
+    "Address": "Адрес",
+    "Lastname and Firstname of Responsible": "Фамилия и имя ответственного лица",
+    "Responsible phone": "Телефон ответственного лица",
+    "Responsible email": "Электронная почта ответственного лица",
+    "University": "Университет",
+    "College": "Колледж",
+    "Professional School": "Профессиональное учебное заведение",
+    "Liceum": "Лицей",
+    "Gimnasium": "Гимназия",
+    "Primary School": "Начальная школа",
+    "Middle School": "Средняя школа"
+}

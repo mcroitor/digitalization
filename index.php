@@ -12,12 +12,14 @@ config::set("theme", "default");
 i18n::lang("ro");
 i18n::init();
 
+$content = "";
 $content = file_get_contents(config::TEMPLATE_DIR . "/" . config::current_stage() . ".tpl.php");
 
 // TODO: rewrite this latter
 $logger->info("current stage: " . config::current_stage());
 if(file_exists(config::ROOT_DIR . "/stages/" . config::current_stage() . ".php"))
 {
+
     $logger->info("stage exists");
     include_once config::ROOT_DIR . "/stages/" . config::current_stage() . ".php";
 }
@@ -26,7 +28,7 @@ $districts = "";
 $data = [
     "<!-- title -->" => \core\mc\i18n::get("Questionnaire"),
     "<!-- scripts -->" => script(config::SCRIPTS_DIR . "/core.js") . script(config::SCRIPTS_DIR . "/stages.js"),
-    "<!-- header -->" => \core\mc\i18n::get("archive_state"),
+    "<!-- header -->" => \core\mc\i18n::get("The Evaluation Questionnaire about diplomas registries state"),
     "<!-- menu -->" => "",
     "<!-- content -->" => $content,
     "<!-- footer -->" => "",
