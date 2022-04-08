@@ -1,18 +1,19 @@
-
-CREATE TABLE cl_serial (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
-);
-
-CREATE TABLE user (
+CREATE TABLE IF NOT EXISTS config (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    email TEXT NOT NULL,
-    password TEXT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    value TEXT NOT NULL
 );
 
-CREATE TABLE center (
+INSERT INTO config (name, value) VALUES ('theme', 'default'), ('language', 'en');
+
+CREATE TABLE IF NOT EXISTS user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS center (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     type TEXT NOT NULL,
@@ -25,7 +26,7 @@ CREATE TABLE center (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE archive_state (
+CREATE TABLE IF NOT EXISTS archive_state (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     center_id INTEGER NOT NULL,
     serial TEXT NOT NULL,

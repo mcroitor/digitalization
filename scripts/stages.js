@@ -16,11 +16,11 @@ stages.description = async function () {
     }
 };
 
-stages.final = async function () {
-    let data = {"stage": "final"};
+stages.thankyou = async function () {
+    let data = {"stage": "thankyou"};
     let result = await request("/api/", data);
     console.log("[debug] " + result);
-    if (result.stage !== "final") {
+    if (result.stage !== "thankyou") {
         window.location.href = "/?stage=" + result.stage;
     }
 };

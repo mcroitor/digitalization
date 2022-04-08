@@ -23,12 +23,18 @@ if($request->stage !== config::current_stage()){
 }
 
 // prepare response here
-// if redirect necessary, send back the next stage
-
 $response = [
-    "stage" => config::next_stage(),
-    "message" => "ok",
+    "stage" => config::current_stage(),
+    "message" => "",
 ];
+// if redirect necessary, send back the next stage
+if (file_exists(config::ROOT_DIR . "/stages/" . config::current_stage() . ".php")) {
+    $logger->info("stage exists");
+    include_once config::ROOT_DIR . "/stages/" . config::current_stage() . ".php";
+    $response = config::current_stage()::handle($request);
+} else {
+    $logger->info("stage does not exist");
+}
 
 header("Content-Type: application/json");
 echo json_encode($response);

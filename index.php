@@ -12,18 +12,17 @@ config::set("theme", "default");
 i18n::lang("ro");
 i18n::init();
 
-$content = "";
 $content = file_get_contents(config::TEMPLATE_DIR . "/" . config::current_stage() . ".tpl.php");
 
 // TODO: rewrite this latter
 $logger->info("current stage: " . config::current_stage());
-if(file_exists(config::ROOT_DIR . "/stages/" . config::current_stage() . ".php"))
-{
-
+if (file_exists(config::ROOT_DIR . "/stages/" . config::current_stage() . ".php")) {
     $logger->info("stage exists");
     include_once config::ROOT_DIR . "/stages/" . config::current_stage() . ".php";
+    $content = config::current_stage()::get_content($content);
+} else {
+    $logger->info("stage does not exist");
 }
-$districts = "";
 
 $data = [
     "<!-- title -->" => \core\mc\i18n::get("Questionnaire"),
