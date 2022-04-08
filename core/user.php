@@ -36,11 +36,11 @@ class user
             "user",
             ["*"],
             [
-                "username" => $username,
-                "password" => password_hash($password, PASSWORD_DEFAULT)
+                "username" => $username
             ]
         );
-        if (count($user) !== 1) {
+        \config::stdout()->info(print_r($user, true));
+        if (count($user) !== 1 || !password_verify($password, $user[0]["password"])) {
             return false;
         }
         $_SESSION["user"] = [

@@ -8,7 +8,7 @@ INSERT INTO config (name, value) VALUES ('theme', 'default'), ('language', 'en')
 
 CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL,
+    username TEXT UNIQUE NOT NULL,
     email TEXT NOT NULL,
     password TEXT NOT NULL
 );

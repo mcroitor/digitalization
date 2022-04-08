@@ -82,6 +82,10 @@ class config {
             self::set($config["key"], $config["value"]);
         }
     }
+
+    public static function stdout() {
+        return \core\mc\logger::stdout();
+    }
 }
 
 config::core();
