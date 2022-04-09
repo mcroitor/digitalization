@@ -29,11 +29,12 @@ CREATE TABLE IF NOT EXISTS center (
 CREATE TABLE IF NOT EXISTS archive_state (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     center_id INTEGER NOT NULL,
+    on_hold INTEGER NOT NULL,
     serial TEXT NOT NULL,
     isced TEXT NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    nr_registres INTEGER NOT NULL,
+    nr_registries INTEGER NOT NULL,
     nr_registrations INTEGER NOT NULL,
     language TEXT NOT NULL,
     state TEXT NOT NULL,

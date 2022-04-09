@@ -147,16 +147,17 @@ class database {
     }
 
     /**
-     * insert values in table
+     * insert values in table, returns inserted data.
      * @param string $table
      * @param array $values
-     * @return void
+     * @return array
      */
-    public function insert(string $table, array $values): void {
+    public function insert(string $table, array $values): array {
         $columns = \implode(", ", array_keys($values));
         $data = '"' . \implode('",  "', array_values($values)) . '"';
         $query = "INSERT INTO {$table} ($columns) VALUES ({$data})";
         $this->query_sql($query, "Error: ", false);
+        return $this->select($table, ["*"], $values)[0];
     }
 
     /**

@@ -54,6 +54,7 @@ class user
     public static function logout()
     {
         self::reset();
+        session_destroy();
     }
 
     public static function is_logged_in()
