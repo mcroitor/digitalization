@@ -157,7 +157,8 @@ class database {
         $data = '"' . \implode('",  "', array_values($values)) . '"';
         $query = "INSERT INTO {$table} ($columns) VALUES ({$data})";
         $this->query_sql($query, "Error: ", false);
-        return $this->select($table, ["*"], $values)[0];
+        $result = $this->select($table, ["*"], $values);
+        return end($result);
     }
 
     /**

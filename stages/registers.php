@@ -13,7 +13,27 @@ class registers
         $content = str_replace("<!-- isced -->", self::isced(), $data);
         $content = str_replace("<!-- language -->", self::language(), $content);
         $content = str_replace("<!-- institution_type -->", self::institution_type(), $content);
-        return str_replace("<!-- archive_state -->", self::archive_state(), $content);
+        $content = str_replace("<!-- archive_state -->", self::archive_state(), $content);
+
+        $registers = self::get(\core\mc\user::get("center_id"));
+        \core\mc\logger::stdout()->info("registers: " . print_r($registers, true));
+        $registers_rows = "";
+        foreach ($registers as $register) {
+            $registers_rows .= "<tr id='register_{$register["id"]}'>
+                <td>{$register["serial"]}</td>
+                <td>{$register["isced"]}</td>
+                <td>{$register["start_date"]}</td>
+                <td>{$register["end_date"]}</td>
+                <td>{$register["nr_registries"]}</td>
+                <td>{$register["nr_registrations"]}</td>
+                <td>{$register["language"]}</td>
+                <td><a href='#' onclick='stages.remove({$register["id"]});'>
+                    <img src='theme/default/icons/delete.svg' class='height-20'>
+                </a></td>
+            </tr>";
+        }
+        $content = str_replace("<!-- registers -->", $registers_rows, $content);
+        return $content;
     }
 
     public static function handle($request)
@@ -31,6 +51,11 @@ class registers
         } elseif ($request->action === "next") {
             $stage = config::next_stage();
 
+        }
+        elseif ($request->action === "remove") {
+            $result = self::remove($request->id);
+            $stage = config::current_stage();
+            \config::stdout()->info("Register removed: " . json_encode($result));
         }
         return [
             "stage" => $stage,
@@ -86,13 +111,20 @@ class registers
     private static function add($data)
     {
         $db = new \core\mc\sql\database(config::DSN);
-        \config::stdout()->info("Adding register: " . json_encode($data));
-        $data->center_id = $_SESSION["center"];
-        $db->insert("archive_state", (array)$data);
-        return $db->select("archive_state", ["*"], $data);
+        $data = (array)$data;
+        $data["center_id"] = \core\mc\user::get("center_id");
+        $data["on_hold"] = $data["on_hold"] === "on" ? 1 : 0;
+        $result = $db->insert("archive_state", $data);
+        return $result;
+    }
+
+    private static function get($center_id) {
+        $db = new \core\mc\sql\database(config::DSN);
+        $result = $db->select("archive_state", ["*"], ["center_id" => $center_id]);
+        return $result;
     }
     
-    private static function delete($id)
+    private static function remove($id)
     {
         $db = new \core\mc\sql\database(config::DSN);
         $db->delete("archive_state", [

@@ -87,26 +87,16 @@
 <table class="u-full-width">
     <thead>
         <tr>
-            <th>{{Serial}}</th>
-            <th>{{ISCED}}</th>
-            <th>{{Start Date}}</th>
-            <th>{{End Date}}</th>
-            <th>{{Number of registries}}</th>
-            <th>{{Number of registrations}}</th>
-            <th>{{Language}}</th>
-            <th>{{Remove}}</th>
+            <th class='width-10p'>{{Serial}}</th>
+            <th class='width-10p'>{{ISCED}}</th>
+            <th class='width-15p'>{{Start Date}}</th>
+            <th class='width-15p'>{{End Date}}</th>
+            <th class='width-10p'>{{Number of registries}}</th>
+            <th class='width-10p'>{{Number of registrations}}</th>
+            <th class='width-20p'>{{Language}}</th>
+            <th class='width-10p'>{{Remove}}</th>
     </thead>
     <tbody id="registers">
-        <tr>
-            <td>{{serial}}</td>
-            <td>{{ISCED5}}</td>
-            <td>{{2000-01-01}}</td>
-            <td>{{2000-03-31}}</td>
-            <td>{{20}}</td>
-            <td>{{1000}}</td>
-            <td>{{language}}</td>
-            <td><a href="#" onclick="stages.remove(this);"><img src="theme/default/icons/delete.svg" class="height-20"></a></td>
-        </tr>
         <!-- registers -->
     </tbody>
 </table>

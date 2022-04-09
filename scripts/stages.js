@@ -78,11 +78,26 @@ stages.add = async function () {
         window.location.href = "/?stage=" + result.stage;
     }
     let registers = get("registers");
-    registers.appendChild(createRegisterElement(result.register));
+    registers.appendChild(createRegisterElement(result.message[0]));
+};
+
+stages.remove = async function (id) {
+    let data = {
+        "stage": "registers",
+        "action": "remove",
+        "id": id
+    };
+    let result = await request("/api/", data);
+    if (result.stage !== "registers") {
+        window.location.href = "/?stage=" + result.stage;
+    }
+    get("register_" + id).remove();
 };
 
 function createRegisterElement(data) {
+    console.log("[debug] " + data);
     let tr = _d.createElement("tr");
+    tr.addAttribute("id", "register_" + data.id);
     let td = _d.createElement("td");
     td.innerHTML = data.serial;
     tr.appendChild(td);
