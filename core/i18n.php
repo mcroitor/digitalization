@@ -82,4 +82,22 @@ class i18n {
         }
         return $text;
     }
+
+    /**
+     * get language switcher
+     * @param array $languages
+     * @return string
+     */
+    public static function switcher($languages = []) {
+        $html = "<select class='offset-by-ten two columns' onchange='switchLanguage(this);'>";
+        foreach($languages as $lang => $label) {
+            $selected = "";
+            if($lang == self::lang()) {
+                $selected = " selected";
+            }
+            $html .= "<option{$selected} value='{$lang}'>{$label}</option>";
+        }
+        $html .= "</select>";
+        return $html;
+    }
 }

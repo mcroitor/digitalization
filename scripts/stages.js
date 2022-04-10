@@ -125,3 +125,7 @@ function createRegisterElement(data) {
     tr.appendChild(td);
     return tr;
 }
+
+function switchLanguage(option){
+    window.location.href = "/?lang=" + option.value;
+}
