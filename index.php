@@ -29,11 +29,11 @@ if (file_exists(config::ROOT_DIR . "/stages/" . config::current_stage() . ".php"
 }
 
 $data = [
-    "<!-- title -->" => i18n::get("Questionnaire"),
+    "<!-- title -->" => i18n::get("Questionnaire"), // $data["title"]
     "<!-- scripts -->" => script(config::SCRIPTS_DIR . "/core.js") . script(config::SCRIPTS_DIR . "/stages.js"),
     "<!-- header -->" => i18n::get("The Evaluation Questionnaire about diplomas registries state"),
     "<!-- menu -->" => i18n::switcher(["en" => "English", "ro" => "Română", "ru" => "Русский"]),
-    "<!-- content -->" => $content,
+    "<!-- content -->" => $content, // blog::posts()
     "<!-- footer -->" => "",
 ];
 
